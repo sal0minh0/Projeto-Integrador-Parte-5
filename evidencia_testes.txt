@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.4, pytest-9.0.3, pluggy-1.6.0
+rootdir: /home/sal/Documents/CODE/testes/Projeto-Integrador-Parte-5
+plugins: cov-7.1.0, anyio-4.12.1
+collected 18 items
+
+tests/integration/test_integracao.py ....                                [ 22%]
+tests/unit/test_automacao.py ..............                              [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.4-final-0 ________________
+
+Name               Stmts   Miss  Cover   Missing
+------------------------------------------------
+src/automacao.py      84      0   100%
+------------------------------------------------
+TOTAL                 84      0   100%
+============================== 18 passed in 0.11s ==============================

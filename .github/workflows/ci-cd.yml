@@ -1,0 +1,55 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  integracao-continua:
+    name: Integração Contínua (CI)
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Baixar Código
+      uses: actions/checkout@v4
+
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.14.3'
+
+    - name: Instalar Dependências
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Executar Testes com Cobertura
+      run: |
+        python -m pytest tests/ --cov=src --cov-report=term-missing
+
+    - name: Executar Linter (Pylint)
+      run: |
+        python -m pylint src/
+
+  entrega-continua:
+    name: Entrega Contínua (CD)
+    needs: integracao-continua
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Baixar Código
+      uses: actions/checkout@v4
+
+    - name: Criar Pacote de Entrega
+      run: |
+        zip -r projeto-parte-5.zip src/ requirements.txt README.md relatorio_refatoracao.md
+
+    - name: Disponibilizar no GitHub
+      uses: actions/upload-artifact@v4
+      with:
+        name: pacote-projeto-parte-5
+        path: projeto-parte-5.zip
+

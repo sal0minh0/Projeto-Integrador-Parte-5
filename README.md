@@ -1,2 +1,5 @@
-# Projeto-Integrador-Parte-5
-Repositório da Etapa 5 do Projeto, para a Disciplina Testes 
+# Projeto Integrador - Etapa 5
+
+### Relatório
+
+[📎 Link](https://docs.google.com/document/d/1GddIk5IWvgQET65ZTA2EPQWcSQTXgCRzgq7cBS9F-6Y/edit?usp=sharing)
